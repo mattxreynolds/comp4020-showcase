@@ -14,7 +14,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme="dark"]) {
     --bg: #f3f1e7;
     --panel: #fbfaf3;
     --border: #d8d3bf;
@@ -26,6 +26,32 @@
     --yellow: #8a6d1f;
     color-scheme: light;
   }
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f1e7;
+  --panel: #fbfaf3;
+  --border: #d8d3bf;
+  --text: #1f2a20;
+  --dim: #6a7266;
+  --green: #1f7a3f;
+  --amber: #966a1a;
+  --red: #b3392e;
+  --yellow: #8a6d1f;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0d0a;
+  --panel: #0f1310;
+  --border: #24302a;
+  --text: #d7ecd9;
+  --dim: #6b8a74;
+  --green: #7ee787;
+  --amber: #e3b341;
+  --red: #ff6b6b;
+  --yellow: #f2c94c;
+  color-scheme: dark;
 }
 
 * {
@@ -102,6 +128,24 @@ a:hover {
   margin-left: 0.5rem;
   font-size: 0.8rem;
   color: var(--dim);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--dim);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 0.2rem 0.45rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--green);
+  border-color: var(--green);
 }
 
 .term-body {

@@ -3,6 +3,31 @@ import "./style.css";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const THEME_KEY = "comp4020-showcase-theme";
+type Theme = "dark" | "light";
+
+function storedTheme(): Theme | null {
+  const v = localStorage.getItem(THEME_KEY);
+  return v === "dark" || v === "light" ? v : null;
+}
+
+function systemTheme(): Theme {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function activeTheme(): Theme {
+  return storedTheme() ?? systemTheme();
+}
+
+function setTheme(theme: Theme): void {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(THEME_KEY, theme);
+}
+
+if (storedTheme()) {
+  document.documentElement.dataset.theme = storedTheme()!;
+}
+
 function checkGlyph(state: Check["state"]): string {
   return state === "pass" ? "✓" : "○";
 }
@@ -53,6 +78,7 @@ root.innerHTML = `
         <span class="dot dot-yellow"></span>
         <span class="dot dot-green"></span>
         <span class="term-title">matt@comp4020 — coursework.log</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark/light theme"></button>
       </div>
       <div class="term-body">
         <p class="line"><span class="prompt">$</span> whoami</p>
@@ -80,3 +106,18 @@ root.innerHTML = `
     </footer>
   </div>
 `;
+
+const themeToggle = document.querySelector<HTMLButtonElement>(".theme-toggle")!;
+
+function renderToggle(): void {
+  const theme = activeTheme();
+  themeToggle.textContent = theme === "dark" ? "☾ dark" : "☀ light";
+  themeToggle.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} mode`);
+}
+
+themeToggle.addEventListener("click", () => {
+  setTheme(activeTheme() === "dark" ? "light" : "dark");
+  renderToggle();
+});
+
+renderToggle();
