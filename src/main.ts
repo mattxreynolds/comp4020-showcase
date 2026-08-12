@@ -1,49 +1,82 @@
-import { deliverables, type Deliverable } from "./data/deliverables";
+import { deliverables, type Check, type Deliverable } from "./data/deliverables";
 import "./style.css";
 
-function card(d: Deliverable): string {
-  const links = [
-    d.liveUrl
-      ? `<a class="btn btn-primary" href="${d.liveUrl}" target="_blank" rel="noopener">Live demo</a>`
-      : "",
-    d.repoUrl
-      ? `<a class="btn" href="${d.repoUrl}" target="_blank" rel="noopener">Repo</a>`
-      : "",
-  ]
-    .filter(Boolean)
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function checkGlyph(state: Check["state"]): string {
+  return state === "pass" ? "✓" : "○";
+}
+
+function checksLine(checks: Check[]): string {
+  return checks
+    .map((c) => `<span class="chk chk-${c.state}">${checkGlyph(c.state)} ${c.name}</span>`)
     .join("");
+}
 
-  const statusClass = d.status === "Shipped" ? "status-shipped" : "status-progress";
+function links(d: Deliverable): string {
+  const items = [
+    d.liveUrl ? `<a href="${d.liveUrl}" target="_blank" rel="noopener">./live</a>` : "",
+    d.repoUrl ? `<a href="${d.repoUrl}" target="_blank" rel="noopener">./source</a>` : "",
+  ].filter(Boolean);
+  return items.length ? items.join(" ") : `<span class="dim">// not public yet</span>`;
+}
 
+function entry(d: Deliverable, index: number): string {
+  const num = String(index + 1).padStart(2, "0");
   return `
-    <article class="card">
-      <div class="card-head">
-        <span class="kind">${d.kind}</span>
-        <span class="status ${statusClass}">${d.status}</span>
+    <li class="entry" style="--delay: ${index * 90}ms">
+      <div class="entry-path">
+        <span class="dim">${num}</span>
+        <span class="path">~/${d.path}</span>
+        <span class="badge badge-${d.status === "Shipped" ? "shipped" : "progress"}">
+          ${d.status === "Shipped" ? "shipped" : "in progress"}
+        </span>
       </div>
-      <h2>${d.title}</h2>
-      <p>${d.summary}</p>
-      <ul class="tags">
-        ${d.tags.map((t) => `<li>${t}</li>`).join("")}
-      </ul>
-      <div class="links">${links || '<span class="links-empty">Not yet public</span>'}</div>
-    </article>
+      <h2 class="entry-title">${d.title}</h2>
+      <p class="entry-summary">${d.summary}</p>
+      <div class="entry-checks">${checksLine(d.checks)}</div>
+      <div class="entry-tags">${d.tags.map((t) => `<span>#${t.toLowerCase().replace(/\s+/g, "-")}</span>`).join("")}</div>
+      <div class="entry-links">${links(d)}</div>
+    </li>
   `;
 }
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <header class="page-header">
-    <p class="eyebrow">ANU · COMP4020 / COMP8020</p>
-    <h1>Agentic Coding Studio — Coursework</h1>
-    <p class="lede">
-      A running record of what I've built each week, built and shipped with an
-      AI coding agent. Full course:
-      <a href="https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/" target="_blank" rel="noopener">
-        comp.anu.edu.au/courses/comp4020-agentic-coding-studio
-      </a>
-    </p>
-  </header>
-  <main class="grid">
-    ${deliverables.map(card).join("")}
-  </main>
+const shippedCount = deliverables.filter((d) => d.status === "Shipped").length;
+
+const root = document.querySelector<HTMLDivElement>("#app")!;
+
+root.innerHTML = `
+  <div class="crt">
+    <header class="term-header">
+      <div class="term-bar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="term-title">matt@comp4020 — coursework.log</span>
+      </div>
+      <div class="term-body">
+        <p class="line"><span class="prompt">$</span> whoami</p>
+        <p class="line out">Matt Reynolds — ANU, COMP4020/COMP8020 Agentic Coding Studio</p>
+        <p class="line"><span class="prompt">$</span> cat course.md</p>
+        <p class="line out">
+          A semester of shipping small web prototypes with an AI coding agent
+          at the wheel and me steering: one crit or assignment per week,
+          each built, checked, and deployed for real.
+          <a href="https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/" target="_blank" rel="noopener">↳ course site</a>
+        </p>
+        <p class="line"><span class="prompt">$</span> ls deliverables/ <span class="dim">--shipped=${shippedCount}/${deliverables.length}</span></p>
+        <p class="line caret${prefersReducedMotion ? " no-blink" : ""}"><span class="prompt">$</span> <span class="cursor">_</span></p>
+      </div>
+    </header>
+
+    <main>
+      <ol class="entries">
+        ${deliverables.map(entry).join("")}
+      </ol>
+    </main>
+
+    <footer class="term-footer">
+      <p class="line"><span class="prompt">$</span> echo "one entry appended each week it ships"</p>
+    </footer>
+  </div>
 `;
