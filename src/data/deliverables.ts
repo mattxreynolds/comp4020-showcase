@@ -26,8 +26,6 @@ const shippedChecks: Check[] = [
   { name: "deploy", state: "pass" },
 ];
 
-const pendingChecks: Check[] = shippedChecks.map((c) => ({ ...c, state: "pending" }));
-
 export const deliverables: Deliverable[] = [
   {
     id: "crit1",
@@ -58,11 +56,14 @@ export const deliverables: Deliverable[] = [
   {
     id: "ass1",
     path: "assignments/ass1.md",
-    title: "Assignment 1",
+    title: "Assignment 1 — Depth as Time",
     kind: "Assignment",
-    summary: "In progress — repo is still private while the build is underway.",
+    summary:
+      "A single continuous scroll-driven zoom from the Moon to the Cosmic Microwave Background, pairing distance and lookback time at twelve waypoints so 'further away is further back in time' is felt over the scroll rather than read once as a caption.",
     tags: ["Vite", "TypeScript"],
-    status: "In progress",
-    checks: pendingChecks,
+    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-mattxreynolds",
+    liveUrl: "https://comp4020-agentic-coding-studio.github.io/comp4020-ass1-mattxreynolds/",
+    status: "Shipped",
+    checks: shippedChecks,
   },
 ];
