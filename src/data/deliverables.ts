@@ -66,4 +66,17 @@ export const deliverables: Deliverable[] = [
     status: "Shipped",
     checks: shippedChecks,
   },
+  {
+    id: "crit4",
+    path: "crits/crit4.md",
+    title: "Aurora Keys — An Instrument",
+    kind: "Crit",
+    summary:
+      "A pentatonic light-instrument played with a mouse, a touchscreen, or a keyboard, tuned so every combination of notes sounds right. Built and shipped with the dachi crit group's shared repo.",
+    tags: ["TypeScript", "Web Audio API", "Vite", "GitHub Actions"],
+    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-crit4-dachi",
+    liveUrl: "https://comp4020-agentic-coding-studio.github.io/comp4020-crit4-dachi/",
+    status: "Shipped",
+    checks: shippedChecks,
+  },
 ];
