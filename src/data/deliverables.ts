@@ -69,13 +69,13 @@ export const deliverables: Deliverable[] = [
   {
     id: "crit4",
     path: "crits/crit4.md",
-    title: "Aurora Keys — An Instrument",
+    title: "Driftbeat — Synth Drum Machine",
     kind: "Crit",
     summary:
-      "A pentatonic light-instrument played with a mouse, a touchscreen, or a keyboard, tuned so every combination of notes sounds right. Built and shipped with the dachi crit group's shared repo.",
-    tags: ["TypeScript", "Web Audio API", "Vite", "GitHub Actions"],
-    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-crit4-dachi",
-    liveUrl: "https://comp4020-agentic-coding-studio.github.io/comp4020-crit4-dachi/",
+      "A four-pad synth drum machine with a 16-step sequencer and a sparse ambient layer of tones that bloom and fade.",
+    tags: ["Astro", "TypeScript", "Web Audio API", "GitHub Actions"],
+    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-crit4-mattxreynolds",
+    liveUrl: "https://comp4020-agentic-coding-studio.github.io/comp4020-crit4-mattxreynolds/",
     status: "Shipped",
     checks: shippedChecks,
   },
