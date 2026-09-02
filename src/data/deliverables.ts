@@ -79,4 +79,17 @@ export const deliverables: Deliverable[] = [
     status: "Shipped",
     checks: shippedChecks,
   },
+  {
+    id: "crit5",
+    path: "crits/crit5.md",
+    title: "Forethought",
+    kind: "Crit",
+    summary:
+      "A turn-based golf puzzle in the spirit of Golf Peaks: tap a card, tap a direction, and roll the ball into the hole across twelve isometric levels, spending a finite hand of movement cards against terrain that redirects the ball.",
+    tags: ["Astro", "TypeScript", "GitHub Actions"],
+    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-crit5-mattxreynolds",
+    liveUrl: "https://comp4020-agentic-coding-studio.github.io/comp4020-crit5-mattxreynolds/",
+    status: "Shipped",
+    checks: shippedChecks,
+  },
 ];
