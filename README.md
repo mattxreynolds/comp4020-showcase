@@ -1,3 +1,5 @@
+<div align="center">
+
 ![COMP4020 Showcase banner](https://capsule-render.vercel.app/api?type=waving&color=0:0a0d0a,100:1a2f1f&height=200&text=COMP4020%20Showcase&fontSize=42&fontColor=7ee787&desc=Matt%20Reynolds&descAlignY=75&descSize=18)
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -14,6 +16,8 @@ A terminal-themed index of everything I ship for ANU's [COMP4020/COMP8020
 Agentic Coding Studio](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/)
 — one entry per weekly crit or assignment, appended as each deliverable
 ships.
+
+</div>
 
 ## 📚 Table of contents
 
