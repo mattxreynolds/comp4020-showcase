@@ -92,4 +92,17 @@ export const deliverables: Deliverable[] = [
     status: "Shipped",
     checks: shippedChecks,
   },
+  {
+    id: "ass2",
+    path: "assignments/ass2.md",
+    title: "Assignment 2 — SLOP4628 F1 Pit Wall",
+    kind: "Assignment",
+    summary:
+      "A fictional Slop University course-site prototype: F1 Pit Wall, a level-4 course on race strategy under uncertainty, with twelve lectures and decks, an orientation plus eleven assessed labs, five assessment entries, policies, resources, and a four-person teaching team.",
+    tags: ["Astro", "TypeScript", "GitHub Actions"],
+    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-mattxreynolds",
+    liveUrl: "https://comp4020-agentic-coding-studio.github.io/comp4020-ass2-mattxreynolds/",
+    status: "Shipped",
+    checks: shippedChecks,
+  },
 ];
