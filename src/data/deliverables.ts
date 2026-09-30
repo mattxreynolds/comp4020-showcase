@@ -105,4 +105,17 @@ export const deliverables: Deliverable[] = [
     status: "Shipped",
     checks: shippedChecks,
   },
+  {
+    id: "crit7",
+    path: "crits/crit7.md",
+    title: "Swap Board — Tutorial Swap Board",
+    kind: "Crit",
+    summary:
+      "MyTimetable's swap request is blind, so this is a small parallel system for crit-group sessions: post the class you're leaving and the ones you'd join, get offers from students happy to swap, then accept or decline, with comments, private messages and live updates. No automatic matching, and every swap is two people choosing each other.",
+    tags: ["Astro", "TypeScript", "SQLite", "Fly.io", "GitHub Actions"],
+    repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-crit7-mattxreynolds",
+    liveUrl: "https://comp4020-crit7-mattxreynolds.fly.dev/",
+    status: "Shipped",
+    checks: shippedChecks,
+  },
 ];
