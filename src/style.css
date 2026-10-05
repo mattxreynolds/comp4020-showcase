@@ -77,6 +77,12 @@ a:hover {
   border-bottom-style: solid;
 }
 
+a:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
 .dim {
   color: var(--dim);
 }
