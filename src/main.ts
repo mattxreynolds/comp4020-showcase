@@ -17,6 +17,7 @@ function checksLine(checks: Check[]): string {
 function links(d: Deliverable): string {
   const items = [
     d.liveUrl ? `<a href="${d.liveUrl}" target="_blank" rel="noopener" aria-label="Live site for ${d.title}">./live</a>` : "",
+    d.capturesPath ? `<a href="${import.meta.env.BASE_URL}${d.capturesPath}" aria-label="Screenshots and clips of ${d.title}">./captures</a>` : "",
     d.repoUrl ? `<a href="${d.repoUrl}" target="_blank" rel="noopener" aria-label="Source code for ${d.title}">./source</a>` : "",
   ].filter(Boolean);
   return items.length ? items.join(" ") : `<span class="dim">// not public yet</span>`;

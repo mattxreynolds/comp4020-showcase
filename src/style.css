@@ -324,3 +324,43 @@ a:focus-visible,
     margin-left: 0;
   }
 }
+
+/* --- captures pages --- */
+
+.capture-title {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.captures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.capture {
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.capture img,
+.capture video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.capture figcaption {
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  color: var(--dim);
+}
+
+.term-body .line.out a + a {
+  margin-left: 1rem;
+}

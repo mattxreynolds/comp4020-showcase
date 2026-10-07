@@ -64,16 +64,22 @@ one data file, one render function, and one stylesheet.
 ```
 src/
 ├── data/
-│   └── deliverables.ts   # single source of truth: one object per crit/assignment
-├── main.ts                # renders the terminal UI from that data, handles theme toggle
+│   ├── deliverables.ts   # single source of truth: one object per crit/assignment
+│   └── captures.ts       # screenshots/clips for work that has no stable live site
+├── main.ts                # renders the terminal UI from that data
+├── captures.ts            # renders a per-deliverable captures page
+├── theme.ts               # light/dark toggle shared by both pages
 └── style.css              # terminal chrome, entry cards, light/dark theme variables
+captures/
+└── crit8.html             # one tiny page per captures entry (auto-discovered by vite.config.ts)
+public/captures/<id>/      # the images and videos those pages show
 ```
 
 The site is entirely data-driven. `src/main.ts` reads the `deliverables`
 array and renders each one as a card — path, title, summary, tags, status
 badge, check row, and links — plus a shipped-count line in the terminal
-header. There's no routing and no backend: add a deliverable to the data
-file, and it appears on the page.
+header. There's no backend: add a deliverable to the data file, and it appears on
+the page. The only extra pages are the per-deliverable captures pages below.
 
 ## ✨ Key Features
 
@@ -145,6 +151,22 @@ in `src/data/deliverables.ts`:
 - Run `pnpm build` before committing — it's strict about unused code, so
   any now-dead helper (e.g. a `pendingChecks` list with nothing left
   in progress) needs to go too.
+
+### Deliverables without a stable live site
+
+The final project (crits 8–9) lives in one repo that keeps changing, so a live
+link would stop matching what was shown at each crit. Those entries use
+`repoUrl` pointing at the crit's git tag (`.../tree/crit-8`) and a
+`capturesPath` instead of `liveUrl`:
+
+1. Capture screenshots and short clips from the tagged state. Prefer MP4/WebM
+   over GIFs, and compress them.
+2. Put them in `public/captures/<id>/`.
+3. Add an entry to `src/data/captures.ts` (tag, intro, and one item per file
+   with a caption and alt text).
+4. Copy `captures/crit8.html` to `captures/<id>.html` and change `data-id`
+   and the title. `vite.config.ts` picks the page up automatically.
+5. Set `capturesPath: "captures/<id>.html"` on the deliverable.
 
 ## 📦 Deployment
 

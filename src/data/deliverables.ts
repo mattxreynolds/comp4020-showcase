@@ -14,6 +14,8 @@ export type Deliverable = {
   tags: string[];
   repoUrl?: string;
   liveUrl?: string;
+  /** Page on this site (relative to the base path) with screenshots/clips, for work that has no stable live URL. */
+  capturesPath?: string;
   status: "Shipped" | "In progress";
   checks: Check[];
 };
@@ -115,6 +117,20 @@ export const deliverables: Deliverable[] = [
     tags: ["Astro", "TypeScript", "SQLite", "Fly.io", "GitHub Actions"],
     repoUrl: "https://github.com/comp4020-agentic-coding-studio/comp4020-crit7-mattxreynolds",
     liveUrl: "https://comp4020-crit7-mattxreynolds.fly.dev/",
+    status: "Shipped",
+    checks: shippedChecks,
+  },
+  {
+    id: "crit8",
+    path: "crits/crit8.md",
+    title: "Dead Air — Two-Seat Defusal Game",
+    kind: "Crit",
+    summary:
+      "First cut of the final project: a two-seat defusal game in the spirit of Keep Talking and Nobody Explodes. The Operator has the device, the Expert has the manual, and neither can finish alone. Rooms, five randomised modules and a shared station log of every run, at the crit 8 cutoff.",
+    tags: ["Vite", "React", "TypeScript", "Express", "SQLite", "Fly.io"],
+    repoUrl:
+      "https://github.com/comp4020-agentic-coding-studio/comp4020-final-mattxreynolds/tree/crit-8",
+    capturesPath: "captures/crit8.html",
     status: "Shipped",
     checks: shippedChecks,
   },
