@@ -72,4 +72,54 @@ export const captures: Record<string, Capture> = {
       },
     ],
   },
+  crit9: {
+    id: "crit9",
+    tag: "crit-9",
+    intro:
+      "Dead Air as it stood at the crit 9 cutoff (tag crit-9). Since crit 8, actions are tied to the revision a player saw, so racing commands are refused without a strike, and the lobby, seats and station log update live over server-sent events and recover after a dropped connection. These are screenshots from a local build of the tag.",
+    items: [
+      {
+        type: "image",
+        file: "operator-live.png",
+        alt: "The Operator's view on desktop: a fresh device with wire array and symbol lock, a 5:00 countdown, and two crew members connected in the room",
+        caption:
+          "A room with two seats connected, the Operator on desktop and the Expert on a phone in a separate browser. The presence count updates live as seats join and leave.",
+      },
+      {
+        type: "image",
+        file: "read-back-refusal.png",
+        alt: "The Operator's view with a red message reading 'Room changed. Read back the updated device before acting again.' above the mission button",
+        caption:
+          "The crit 9 rule. Two players act on the same observed state at once: the first valid action wins, and the other is refused without a strike and told to read back the updated device.",
+      },
+      {
+        type: "image",
+        file: "expert-reconnecting.png",
+        alt: "The Expert's phone view with a red banner reading 'Link lost. Controls paused; the clock keeps running. Reconnecting to the current mission' above the clock and manual",
+        caption:
+          "A dropped connection on the Expert's phone. Controls pause and the warning sits above the long manual so it can't be missed; the clock keeps running on the server.",
+      },
+      {
+        type: "image",
+        file: "lobby-live-log.png",
+        alt: "The Dead Air lobby with a lost run, room GY4K with three strikes, already listed on the station log",
+        caption:
+          "The lobby, left open and never reloaded, showing a finished run the moment it ended. Station logs now arrive over a server-sent event stream rather than on refresh.",
+      },
+      {
+        type: "image",
+        file: "expert-recovered.png",
+        alt: "The Expert's phone view after reconnecting, showing the Three strikes result, 0 of 5 modules and 4:58 left, with a New mission button",
+        caption:
+          "The same phone after the link returns. A fresh snapshot restores the real state: the mission was lost while the Expert was offline, and the result is waiting for them.",
+      },
+      {
+        type: "image",
+        file: "device-secured.png",
+        alt: "The Operator's view after a successful defuse, with a green 'Device secured' banner, all five modules cleared and no strikes",
+        caption:
+          "A secured device, solved from the manual's rules alone: all five modules cleared, no strikes, and the run logged to the station.",
+      },
+    ],
+  },
 };

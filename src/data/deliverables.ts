@@ -134,4 +134,18 @@ export const deliverables: Deliverable[] = [
     status: "Shipped",
     checks: shippedChecks,
   },
+  {
+    id: "crit9",
+    path: "crits/crit9.md",
+    title: "Dead Air — Final Project",
+    kind: "Crit",
+    summary:
+      "The final project at the crit 9 cutoff: the same two-seat defusal game, made fair under real multiplayer. Each action is tied to the revision a player saw, so racing commands are refused without a strike; the lobby, seats and station log update live over SSE and recover after a dropped connection; and the submission carries a decision record, an audit of the races and a browser test suite.",
+    tags: ["Vite", "React", "TypeScript", "Express", "SQLite", "Fly.io", "Playwright"],
+    repoUrl:
+      "https://github.com/comp4020-agentic-coding-studio/comp4020-final-mattxreynolds/tree/crit-9",
+    capturesPath: "captures/crit9.html",
+    status: "Shipped",
+    checks: shippedChecks,
+  },
 ];
