@@ -35,5 +35,7 @@ export function mountThemeToggle(button: HTMLButtonElement): void {
     render();
   });
 
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+
   render();
 }
